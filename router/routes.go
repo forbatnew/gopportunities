@@ -1,7 +1,7 @@
 package router
 
 import (
-	"github.com/forbatnew/gopportunities/docs"
+	docs "github.com/forbatnew/gopportunities/docs"
 	"github.com/forbatnew/gopportunities/handler"
 	"github.com/gin-gonic/gin"
 	swaggerfiles "github.com/swaggo/files"
@@ -13,7 +13,11 @@ func initializeRoutes(router *gin.Engine) {
 	handler.InitializeHandler()
 	basePath := "/api/v1"
 	docs.SwaggerInfo.BasePath = basePath
-	v1 := router.Group("/api/v1")
+	docs.SwaggerInfo.Title = "Project Gopportunities"
+	docs.SwaggerInfo.Description = "This is a sample opening server."
+	docs.SwaggerInfo.Version = "1.0"
+	docs.SwaggerInfo.Host = "localhost:8080"
+	v1 := router.Group(basePath)
 	{
 		//Show Opening
 		v1.GET("/opening", handler.ShowOpeningHandler)
