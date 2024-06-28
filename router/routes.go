@@ -1,10 +1,10 @@
 package router
 
 import (
-	docs "github.com/forbatnew/gopportunities/docs"
+	"github.com/forbatnew/gopportunities/docs"
 	"github.com/forbatnew/gopportunities/handler"
 	"github.com/gin-gonic/gin"
-	swaggerfiles "github.com/swaggo/files"
+	swaggerFiles "github.com/swaggo/files"
 	ginSwagger "github.com/swaggo/gin-swagger"
 )
 
@@ -13,10 +13,11 @@ func initializeRoutes(router *gin.Engine) {
 	handler.InitializeHandler()
 	basePath := "/api/v1"
 	docs.SwaggerInfo.BasePath = basePath
-	docs.SwaggerInfo.Title = "Project Gopportunities"
-	docs.SwaggerInfo.Description = "This is a sample opening server."
-	docs.SwaggerInfo.Version = "1.0"
-	docs.SwaggerInfo.Host = "localhost:8080"
+	// docs.SwaggerInfo.Title = "Project Gopportunities"
+	// docs.SwaggerInfo.Description = "This is a sample opening server."
+	// docs.SwaggerInfo.Version = "1.0"
+	// docs.SwaggerInfo.Host = "http://localhost:8080"
+	// docs.SwaggerInfo.Schemes = []string{"http", "https"}
 	v1 := router.Group(basePath)
 	{
 		//Show Opening
@@ -29,6 +30,6 @@ func initializeRoutes(router *gin.Engine) {
 
 	//Initialize Swagger
 
-	router.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerfiles.Handler))
+	router.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler))
 
 }
